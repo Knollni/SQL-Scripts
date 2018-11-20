@@ -1,0 +1,38 @@
+-- "Display the number of students that are eligible for exams"
+
+SELECT STUDENT_ID, ELIGIBILITY_FOR_EXAMS
+FROM AD_STUDENT_ATTENDANCE
+WHERE ELIGIBILITY_FOR_EXAMS = 'Y';
+
+-- "Display the number of students that had a grade of 70 or above. "
+
+SELECT (STUDENT_ID)
+FROM AD_EXAM_RESULTS
+WHERE MARKS >= 70;
+
+
+-- "Display highest exam score that Nina received."  
+
+SELECT MAX (MARKS)
+FROM AD_EXAM_RESULTS
+WHERE STUDENT_ID = 710;
+
+
+
+-- "Display the least number of days off." 
+
+SELECT MIN (NO_OF_DAYS_OFF)
+FROM AD_STUDENT_ATTENDANCE;
+
+
+-- "Display the average exam grade received by each student." 
+
+SELECT AVG (MARKS)
+FROM AD_EXAM_RESULTS;
+
+
+-- "Display the average exam grade for the OOAD course." 
+
+SELECT AVG (MARKS)
+FROM AD_EXAM_RESULTS
+WHERE COURSE_ID = 188;
