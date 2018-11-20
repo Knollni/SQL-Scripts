@@ -1,0 +1,17 @@
+--'Nicholas Knoll, 10/23/18, Script Name M09_KnollNicholas_Alter. This script creates the Student and Faculty Login table for M09 assignment.'
+
+--'Added in Email for the student table'
+Drop Table Student;
+CREATE TABLE Student (
+Student_id Number(10),
+Email_ADDR VARCHAR2(100 CHAR) UNIQUE,
+CONSTRAINT Student_PK PRIMARY KEY(Student_id)
+)
+;
+--'Added Faculty_Login to this table. Also assigned it number and max numbers using military time 00:00. This field has to have some number in it to track time.'
+DROP TABLE FacultyLogin;
+Create Table FacultyLogin (
+FacultyLogin_ID Number(4) NOT NULL 
+)
+;
+
