@@ -1,0 +1,63 @@
+--'Nicholas Knoll, 10/23/18, Script Name M09_KnollNicholas_Constraints. This script will create the following mandatory tables and their respective primary and foreign keys from the M09 assignment.'
+
+DROP TABLE faculty;
+--'Creates the faculty table with faculty_ID as the primary key, also uses this table for reference in the Faculty_Login FK.'
+CREATE TABLE faculty (
+Faculty_id Number(10) NOT NULL,
+CONSTRAINT faculty_PK PRIMARY KEY(Faculty_id),
+CONSTRAINT Faculty_Login_FK FOREIGN KEY (Faculty_ID ) REFERENCES faculty ( Faculty_ID )
+)
+;
+--'Creates the Course table with Course_id as the primary key'
+Drop Table COURSE;
+CREATE TABLE Course (
+Course_id Number(10) NOT NULL,
+Course_Name VARCHAR2(50 CHAR) UNIQUE,
+CONSTRAINT Course_PK PRIMARY KEY(Course_id)
+)
+;
+--'Creates the Department table with Department_ID as the primary key, also this table is used as reference for Course_FK.'
+Drop TABLE Department;
+CREATE TABLE Department (
+Department_id Number(10) NOT NULL,
+CONSTRAINT Department_PK PRIMARY KEY(Department_id),
+CONSTRAINT Course_FK FOREIGN KEY (Department_ID ) REFERENCES Department ( Department_ID )
+)
+;
+--'Creates the Academic_Session table with Session_id as the primary key'
+DROP TABLE Academic_Session;
+CREATE TABLE Academic_Session (
+Session_id Number(10) NOT NULL,
+CONSTRAINT Academic_Session_PK PRIMARY KEY(Session_id)
+)
+;
+--'Creates the Exam_Detail table with Exam_id as the primary key'
+DROP TABLE Exam_Detail;
+CREATE TABLE Exam_Detail (
+Exam_id Number(10),
+CONSTRAINT Exam_Detail_PK PRIMARY KEY(Exam_id),
+CONSTRAINT Exam_Result_FK FOREIGN KEY (Exam_ID ) REFERENCES Exam_Detail ( Exam_ID )
+)
+;
+--'Creates the EXAM_TYPE table with the Exam_Type as the primary key, also uses this table as a reference for FK Exam_Detail.'
+DROP TABLE Exam_Type;
+CREATE TABLE EXAM_TYPE (
+Exam_Type VARCHAR2(50 CHAR),
+CONSTRAINT EXAM_TYPE_PK PRIMARY KEY(Exam_Type),
+CONSTRAINT EXAM_DETAIL_FK FOREIGN KEY (EXAM_TYPE) REFERENCES Exam_Type ( EXAM_TYPE )
+)    
+;
+--'Creates the student table with Student_id as the primary key'
+DROP TABLE Student;
+CREATE TABLE Student (
+Student_id Number(10),
+CONSTRAINT Student_PK PRIMARY KEY(Student_id)
+)
+;
+--'Creates the Parent_Information table with Parent_id as the primary key, also uses the student table as a reference to parent information or parent_id foreign key'
+DROP TABLE Parent_Information;
+CREATE TABLE Parent_Information (
+Parent_id Number(10),
+CONSTRAINT Parent_Information_PK PRIMARY KEY(Parent_id),
+CONSTRAINT STUDENT_FK FOREIGN KEY (PARENT_ID ) REFERENCES PARENT_INFORMATION ( PARENT_ID )
+)
