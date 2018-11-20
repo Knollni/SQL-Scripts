@@ -1,0 +1,60 @@
+	1. Display the different courses offered by the departments in the school. 
+--display the different courses offered by the department. 
+
+SELECT COURSE_ID, COURSE_NAME, DEPARTMENT_NAME
+FROM AD_COURSE NATURAL JOIN AD_DEPARTMENT;
+
+--  Display the courses offered in the Fall session.
+SELECT COURSE_NAME, SESSION_NAME
+FROM AD_COURSE d JOIN AD_ACADEMIC_SESSION a
+USING (SESSION_ID)
+WHERE SESSION_ID = 200;
+
+-- Display the course details, the department that offers the courses and students who have enrolled for those courses. 
+SELECT COURSE_NAME, STUDENT_ID, DEPARTMENT_NAME
+FROM AD_STUDENT_COURSE s
+JOIN AD_COURSE c
+ON c.COURSE_ID = s.COURSE_ID
+JOIN AD_DEPARTMENT d 
+ON c.DEPARTMENT_ID = d.DEPARTMENT_ID;
+
+--  Display the course details, the department that offers, the courses and students who have enrolled for those courses for department 30.
+SELECT COURSE_NAME, STUDENT_ID, DEPARTMENT_NAME
+FROM AD_STUDENT_COURSE s
+JOIN AD_COURSE c
+ON c.COURSE_ID = s.COURSE_ID
+JOIN AD_DEPARTMENT d 
+ON c.DEPARTMENT_ID = d.DEPARTMENT_ID
+WHERE d.DEPARTMENT_ID = 30;
+ 
+-- Will the given statement execute successfully? If not, what has to be changed? Make the appropriate changes and include in the script.
+--No it wouldn't as is. See changes below.
+
+SELECT COURSE_NAME, MARKS, EXAM_ID
+FROM AD_COURSE c JOIN AD_EXAM_RESULTS e
+ON e.COURSE_ID = c.COURSE_ID;
+
+
+-- Write a query to display the details of the marks obtained by students who have opted for the course with Course ID in the range of 190 to 195.
+
+SELECT COURSE_NAME, MARKS, EXAM_ID
+FROM AD_COURSE c JOIN AD_EXAM_RESULTS e
+ON e.COURSE_ID
+BETWEEN 190 AND 195;
+
+-- 7. Retrieve the rows from the Exam Results table even if there are no matching records in the Course table. 
+
+SELECT e.STUDENT_ID, e.MARKS, e.COURSE_ID, c.COURSE_NAME
+FROM AD_EXAM_RESULTS e LEFT OUTER JOIN AD_COURSE c
+ON e.COURSE_ID = c.COURSE_ID ; 
+
+-- 8. What output would be generated when the given statement is executed? Include your answers in a comment. 
+
+SELECT * 
+FROM EXAM
+CROSS JOIN EXAM_TYPE;
+
+-- My answer is below. A cartesian is going to be created between the two tables
+SELECT *
+FROM AD_EXAM_DETAIL
+CROSS JOIN AD_EXAM_TYPE;
