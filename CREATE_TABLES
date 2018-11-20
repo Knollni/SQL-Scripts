@@ -1,0 +1,68 @@
+--'Nicholas Knoll, 10/23/18, Script Name M09_KnollNicholas_CreateTables. This script will create the following mandatory tables and their respective primary and foreign keys from the M09 assignment.'
+
+DROP TABLE faculty;
+--'Creates the faculty table with faculty_ID as the primary key'
+CREATE TABLE faculty (
+Faculty_id Number(10) NOT NULL,
+CONSTRAINT faculty_PK PRIMARY KEY(Faculty_id)
+)
+;
+--'Creates the Course table with Course_id as the primary key'
+Drop Table COURSE;
+CREATE TABLE Course (
+Course_id Number(10) NOT NULL,
+Course_Name VARCHAR2(50 CHAR) UNIQUE,
+CONSTRAINT Course_PK PRIMARY KEY(Course_id)
+)
+;
+--'Creates the Department table with Department_ID as the primary key'
+Drop TABLE Department;
+CREATE TABLE Department (
+Department_id Number(10) NOT NULL,
+CONSTRAINT Department_PK PRIMARY KEY(Department_id)
+)
+;
+--'Creates the Academic_Session table with Session_id as the primary key'
+DROP TABLE Academic_Session;
+CREATE TABLE Academic_Session (
+Session_id Number(10) NOT NULL,
+CONSTRAINT Academic_Session_PK PRIMARY KEY(Session_id)
+)
+;
+--'Creates the Exam_Detail table with Exam_id as the primary key'
+DROP TABLE Exam_Detail;
+CREATE TABLE Exam_Detail (
+Exam_id Number(10),
+CONSTRAINT Exam_Detail_PK PRIMARY KEY(Exam_id)
+)
+;
+--'Creates the EXAM_TYPE table with the Exam_Type as the primary key'
+DROP TABLE EXAM_TYPE;
+CREATE TABLE EXAM_TYPE (
+Exam_Type VARCHAR2(50 CHAR),
+CONSTRAINT EXAM_TYPE_PK PRIMARY KEY(Exam_Type)
+)    
+;
+--'Creates the student table with Student_id as the primary key'
+DROP TABLE Student;
+CREATE TABLE Student (
+Student_id Number(10),
+CONSTRAINT Student_PK PRIMARY KEY(Student_id)
+)
+;
+--'Creates the Parent_Information table with Parent_id as the primary key'
+DROP TABLE Parent_Information;
+CREATE TABLE Parent_Information (
+Parent_id Number(10),
+CONSTRAINT Parent_Information_PK PRIMARY KEY(Parent_id)
+)
+
+;
+
+CREATE TABLE AD_STUDENT
+(
+    STUDENT_ID NUMBER NOT NULL ,
+    FIRST_NAME VARCHAR2(50) ,
+    PARENT_ID NUMBER,
+    EMAIL VARCHAR2 (20 CHAR),
+    STUDENT_REG_YEAR DATE) ;
